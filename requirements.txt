@@ -1,9 +1,26 @@
-datasets
-langchain
-langchain-community
-langchain-huggingface
-langchain-core
-langgraph
-huggingface_hub
-transformers
-rank_bm25
+# Core AI and LangChain packages
+langchain==0.3.27
+langchain-community==0.3.27
+langchain-core==0.3.72
+langchain-groq==0.2.8
+langgraph==0.5.4
+langgraph-prebuilt==0.5.2
+
+# Streamlit and web interface
+streamlit>=1.47.0
+requests>=2.32.0
+
+# Data processing
+datasets>=4.0.0
+transformers>=4.54.0
+huggingface_hub>=0.34.0
+rank_bm25>=0.2.2
+
+# Optional dependencies for enhanced features
+duckduckgo-search>=6.3.0
+python-dotenv>=1.1.0
+
+# Core Python packages
+numpy>=2.3.0
+pandas>=2.3.0
+pydantic>=2.11.0
