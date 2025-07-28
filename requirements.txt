@@ -1,0 +1,9 @@
+datasets
+langchain
+langchain-community
+langchain-huggingface
+langchain-core
+langgraph
+huggingface_hub
+transformers
+rank_bm25
