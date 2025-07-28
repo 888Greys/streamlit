@@ -59,43 +59,16 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# Web Search Tool
-try:
-    from ddgs import DDGS
-    
-    def web_search(query: str) -> str:
-        """Search the web for current information about people, events, or topics."""
-        try:
-            with DDGS() as ddgs:
-                results = list(ddgs.text(query, max_results=3))
-                
-            if not results:
-                return "No search results found for your query."
-            
-            # Format the results nicely
-            formatted_results = []
-            for i, result in enumerate(results, 1):
-                formatted_results.append(f"{i}. {result['title']}\n   {result['body']}\n   Source: {result['href']}")
-            
-            return "\n\n".join(formatted_results)
-        except Exception as e:
-            return f"I apologize, but I encountered an issue while searching: {str(e)}"
-    
-    web_search_tool = Tool(
-        name="web_search",
-        func=web_search,
-        description="Search the web for current information about people, events, or topics. Use this when you need up-to-date information that might not be in the guest database."
-    )
-except ImportError:
-    # Fallback if ddgs is not available
-    def web_search_fallback(query: str) -> str:
-        return "Web search is currently unavailable. Please try again later."
-    
-    web_search_tool = Tool(
-        name="web_search",
-        func=web_search_fallback,
-        description="Search the web for current information (currently unavailable)."
-    )
+# Web Search Tool - Simplified fallback version for deployment
+def web_search_fallback(query: str) -> str:
+    """Fallback web search function for deployment environments."""
+    return f"I apologize, but web search is currently unavailable in this deployment environment. However, I can help you with guest information and weather queries. Your search query was: '{query}'"
+
+web_search_tool = Tool(
+    name="web_search",
+    func=web_search_fallback,
+    description="Search the web for current information about people, events, or topics. Currently unavailable in this deployment."
+)
 
 # Weather Tool
 WEATHER_API_KEY = os.getenv("WEATHER_API_KEY", "292f64290fcb8e22685c42af72a3beb1")

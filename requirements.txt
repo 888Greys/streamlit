@@ -10,5 +10,4 @@ datasets
 transformers
 huggingface_hub
 rank_bm25
-duckduckgo-search
 python-dotenv
